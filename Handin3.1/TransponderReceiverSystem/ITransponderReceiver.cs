@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace TransponderReceiverSystem
 {
-
-    class Program
+    public interface ITransponderReceiver
     {
-        static void Main(string[] args)
-        {
-        }
+       event EventHandler<RawTransponderDataEventArgs> TransponderDataReady;
+ 
     }
 }

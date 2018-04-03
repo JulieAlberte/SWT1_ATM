@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace TransponderReceiverSystem
 {
-
-    class Program
+    public class TransponderReceiveFactory
     {
-        static void Main(string[] args)
-        {
-        }
+        public static ITransponderReceiver CreateTransponderDataReceiver()
     }
 }
