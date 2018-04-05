@@ -11,6 +11,8 @@ namespace TransponderReceiverSystem
     {
         static void Main(string[] args)
         {
+            TransponderObserverSoftware tr = new TransponderObserverSoftware();
+            tr.print();
         }
     }
 }
