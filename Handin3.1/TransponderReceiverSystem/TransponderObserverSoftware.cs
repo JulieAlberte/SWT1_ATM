@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TransponderReceiver;
 
-
 namespace TransponderReceiverSystem
 {
     class TransponderObserverSoftware
@@ -19,9 +18,12 @@ namespace TransponderReceiverSystem
         private void TransponderReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)
         {
             string[] separators = {";"};
-            string value = rawTransponderDataEventArgs.ToString();
-            string[] data = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-
+            List<string> values = rawTransponderDataEventArgs.TransponderData;
+            foreach (var value in values)
+            {
+                string[] data = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                TransponderData td = new TransponderData(data[0], data[1], data[2], data[3], data[4]);
+            }
         }
     }
 }
