@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransponderReceiverSystem
 {
-    class TransponderData
+    public class TransponderData
     {
         private string _tag { get; set; }
         private string _x_coordinate { get; set; }

@@ -7,7 +7,7 @@ using TransponderReceiver;
 
 namespace TransponderReceiverSystem
 {
-    class TransponderObserverSoftware
+    public class TransponderObserverSoftware
     {
         public TransponderObserverSoftware()
         {

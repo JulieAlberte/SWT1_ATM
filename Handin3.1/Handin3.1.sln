@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverSystem", "TransponderReceiverSystem\TransponderReceiverSystem.csproj", "{BCCEDDCB-8647-4AC3-9019-8A52F72F2F88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverSystem.Test.Unit", "TransponderReceiverSystem.Test.Unit\TransponderReceiverSystem.Test.Unit.csproj", "{DAF003F4-89F5-4305-A9E4-00303227CF3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BCCEDDCB-8647-4AC3-9019-8A52F72F2F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCCEDDCB-8647-4AC3-9019-8A52F72F2F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCCEDDCB-8647-4AC3-9019-8A52F72F2F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAF003F4-89F5-4305-A9E4-00303227CF3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF003F4-89F5-4305-A9E4-00303227CF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF003F4-89F5-4305-A9E4-00303227CF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAF003F4-89F5-4305-A9E4-00303227CF3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
