@@ -15,32 +15,55 @@ namespace TransponderReceiverSystem
             transponderReceiver.TransponderDataReady+= TransponderReceiverOnTransponderDataReady;
         }
 
-        private void TransponderReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)
+        private void TransponderReceiverOnTransponderDataReady(object sender,
+            RawTransponderDataEventArgs rawTransponderDataEventArgs)
         {
             List<string> values = rawTransponderDataEventArgs.TransponderData;
-
-            //string[] data = { };
-            //List<string> values = rawTransponderDataEventArgs.TransponderData;
-            //foreach (var value in values)
-            //{
-            //    data = ParseString(value);
-            //    if (ValidateTrack(data))
-            //    {
-            //        data[4] = FormatTimestamp(data[4]);
-            //        TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
-            //    }
-            //    //else something
-            //}
+            CreateTrackObject(values);
         }
+
+        public void CreateTrackObject(List<string> values)
+        {
+            //TrackParser myTrackParser = new TrackParser();
+            TrackValidation myTackTrackValidation = new TrackValidation();
+
+            string[] data = { };
+            foreach (string value in values)
+            {
+                data = TrackParser.ParseString(value);
+                if (myTackTrackValidation.ValidateTrack(data[1], data[2], data[3]))
+                {
+                    TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
+                }
+                else
+                {
+                    //something
+                }
+
+            }
+        }
+
+        //string[] data = { };
+        //List<string> values = rawTransponderDataEventArgs.TransponderData;
+        //foreach (var value in values)
+        //{
+        //    data = ParseString(value);
+        //    if (ValidateTrack(data))
+        //    {
+        //        data[4] = FormatTimestamp(data[4]);
+        //        TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
+        //    }
+        //    //else something
+        //}
 
         //Returns string array
-        public string[] ParseString(string values)
-        {
-            string[] data = {};
-            string[] separators = { ";" };
-            data = values.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-            return data;
-        }
+        //public string[] ParseString(string values)
+        //{
+        //    string[] data = {};
+        //    string[] separators = { ";" };
+        //    data = values.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+        //    return data;
+        //}
 
         ////public bool ValidateTrack(string[] data)
         ////{
@@ -65,10 +88,10 @@ namespace TransponderReceiverSystem
         ////    }
         ////}
 
-        public string FormatTimestamp(string timestamp)
-        {
+        //public string FormatTimestamp(string timestamp)
+        //{
 
-            return timestamp;
-        }
+        //    return timestamp;
+        //}
     }
 }
