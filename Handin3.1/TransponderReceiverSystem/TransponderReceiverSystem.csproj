@@ -46,8 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPrint.cs" />
     <Compile Include="ITrackFormation.cs" />
     <Compile Include="ITrackValidation.cs" />
+    <Compile Include="Print.cs" />
     <Compile Include="TrackFormation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
