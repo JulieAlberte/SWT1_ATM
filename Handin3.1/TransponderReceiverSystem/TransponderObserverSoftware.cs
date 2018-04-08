@@ -17,18 +17,20 @@ namespace TransponderReceiverSystem
 
         private void TransponderReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)
         {
-            string[] data = { };
             List<string> values = rawTransponderDataEventArgs.TransponderData;
-            foreach (var value in values)
-            {
-                data = ParseString(value);
-                if (ValidateTrack(data))
-                {
-                    data[4] = FormatTimestamp(data[4]);
-                    TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
-                }
-                //else something
-            }
+
+            //string[] data = { };
+            //List<string> values = rawTransponderDataEventArgs.TransponderData;
+            //foreach (var value in values)
+            //{
+            //    data = ParseString(value);
+            //    if (ValidateTrack(data))
+            //    {
+            //        data[4] = FormatTimestamp(data[4]);
+            //        TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
+            //    }
+            //    //else something
+            //}
         }
 
         //Returns string array
@@ -40,28 +42,28 @@ namespace TransponderReceiverSystem
             return data;
         }
 
-        public bool ValidateTrack(string[] data)
-        {
-            int minXCoordinate = 10000;
-            int maxXCoordinate = 90000;
-            int minYCoordinate = 10000;
-            int maxYCoordinate = 90000;
-            int minAltitue = 500;
-            int maxAltitude = 20000;
-            int x_coordinate = int.Parse(data[1]);
-            int y_coordinate = int.Parse(data[2]);
-            int altitude = int.Parse(data[3]);
+        ////public bool ValidateTrack(string[] data)
+        ////{
+        ////    int minXCoordinate = 10000;
+        ////    int maxXCoordinate = 90000;
+        ////    int minYCoordinate = 10000;
+        ////    int maxYCoordinate = 90000;
+        ////    int minAltitue = 500;
+        ////    int maxAltitude = 20000;
+        ////    int x_coordinate = int.Parse(data[1]);
+        ////    int y_coordinate = int.Parse(data[2]);
+        ////    int altitude = int.Parse(data[3]);
 
-            if (x_coordinate > minXCoordinate & x_coordinate < maxXCoordinate & )
-            {
+        ////    if (x_coordinate > minXCoordinate & x_coordinate < maxXCoordinate & )
+        ////    {
 
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        ////        return true;
+        ////    }
+        ////    else
+        ////    {
+        ////        return false;
+        ////    }
+        ////}
 
         public string FormatTimestamp(string timestamp)
         {
