@@ -10,9 +10,14 @@ namespace TransponderReceiverSystem
     {
         public static string[] ParseString(string values)
         {
-            string[] data = {};
+            //string[] data = new string[5];
             string[] separators = { ";" };
-            data = values.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] data = values.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            Console.WriteLine(data[0]);
+            Console.WriteLine(data[1]);
+            Console.WriteLine(data[2]);
+            Console.WriteLine(data[3]);
+            Console.WriteLine(data[4]);
             return data;
         }
     }

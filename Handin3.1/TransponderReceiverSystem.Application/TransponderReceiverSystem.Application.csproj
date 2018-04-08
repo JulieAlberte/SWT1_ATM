@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TransponderReceiverSystem\TransponderReceiverSystem.csproj">
+      <Project>{bcceddcb-8647-4ac3-9019-8a52f72f2f88}</Project>
+      <Name>TransponderReceiverSystem</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

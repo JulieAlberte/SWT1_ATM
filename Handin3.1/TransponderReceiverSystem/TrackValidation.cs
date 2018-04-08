@@ -12,7 +12,7 @@ namespace TransponderReceiverSystem
         private int _maxXCoordinate { get; set; }
         private int _minYCoordinate { get; set; }
         private int _maxYCoordinate { get; set; }
-        private int _minAltitue { get; set; }
+        private int _minAltitude { get; set; }
         private int _maxAltitude { get; set; }
 
         public TrackValidation(int minXCoordinate, int maxXCoordinate, int minYCoordinate, int maxYCoordinate, int minAltitude, int maxAltitude)
@@ -21,7 +21,7 @@ namespace TransponderReceiverSystem
             _maxXCoordinate = maxXCoordinate;
             _minYCoordinate = minYCoordinate;
             _maxYCoordinate = maxYCoordinate;
-            _minAltitue = minAltitude;
+            _minAltitude = minAltitude;
             _maxAltitude = maxAltitude;
         }
 
@@ -31,35 +31,27 @@ namespace TransponderReceiverSystem
             _maxXCoordinate = 90000;
             _minYCoordinate = 10000;
             _maxYCoordinate = 90000;
-            _minAltitue = 500;
+            _minAltitude = 500;
             _maxAltitude = 20000;
         }
-        public bool ValidateTrack(string x_coordinate, string y_coordinate, string altitude)
+        
+        public bool ValidateTrack(string xcoordinate, string ycoordinate, string altitude)
         {
-            //If (indenfor firkant)
-            //return true;
-            //Hvis ikke
-            //Return false
-            return true;
+            int xCoordinate = int.Parse(xcoordinate);
+            int yCoordinate = int.Parse(ycoordinate);
+            int aAltitude = int.Parse(altitude);
+
+            if (xCoordinate > _minXCoordinate && xCoordinate < _maxXCoordinate
+                && yCoordinate > _minYCoordinate && yCoordinate < _maxYCoordinate
+                && aAltitude > _minAltitude && aAltitude < _maxAltitude)
+            {
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        
-
-        
-        //static public bool ValidateTrack(string[] data)
-        //{
-        //    int x_coordinate = int.Parse(data[1]);
-        //    int y_coordinate = int.Parse(data[2]);
-        //    int altitude = int.Parse(data[3]);
-
-        //    if (x_coordinate > minXCoordinate & x_coordinate < maxXCoordinate &)
-        //    {
-
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

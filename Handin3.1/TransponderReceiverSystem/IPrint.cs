@@ -2,6 +2,7 @@
 {
     public interface IPrint
     {
-        void PrintTrack();
+        void PrintTrack(TransponderObserverSoftware tr);
+       
     }
 }

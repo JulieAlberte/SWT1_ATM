@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TransponderReceiverSystem
 {
-    class Print : IPrint
+    public class Print : IPrint
     {
-        public void PrintTrack()
+        public void PrintTrack(TransponderObserverSoftware tr)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(tr.TrackObjectList); 
         }
     }
 }
