@@ -8,7 +8,7 @@ namespace TransponderReceiverSystem
 {
     class TrackFormation : ITrackFormation
     {
-        private int year { set; get; }
+        //private int year { set; get; }
         public string FormatTimestamp(string timestamp)
         {
             //Formatér timestamp, så det er "pænt", se opgavebeskrivelse
