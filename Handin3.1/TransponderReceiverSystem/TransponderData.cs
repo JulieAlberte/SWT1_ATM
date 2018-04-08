@@ -20,17 +20,17 @@ namespace TransponderReceiverSystem
             _y_coordinate = y_coordinate;
             _altitude = altitude;
             _timestamp = timestamp;
-            //Print();
+            Print();
         }
 
-        //public void Print()
-        //{
-        //    Console.WriteLine(_tag);
-        //    Console.WriteLine(_x_coordinate);
-        //    Console.WriteLine(_y_coordinate);
-        //    Console.WriteLine(_altitude);
-        //    Console.WriteLine(_timestamp);
-        //}
+        public void Print()
+        {
+            Console.WriteLine(_tag);
+            Console.WriteLine(_x_coordinate);
+            Console.WriteLine(_y_coordinate);
+            Console.WriteLine(_altitude);
+            Console.WriteLine(_timestamp);
+        }
 
     }
 }
