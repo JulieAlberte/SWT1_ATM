@@ -24,10 +24,10 @@ namespace TransponderReceiverSystem
 
         public void CreateTrackObject(List<string> values)
         {
-            //TrackParser myTrackParser = new TrackParser();
             TrackValidation myTackTrackValidation = new TrackValidation();
 
-            string[] data = { };
+            string[] data = {};
+
             foreach (string value in values)
             {
                 data = TrackParser.ParseString(value);
