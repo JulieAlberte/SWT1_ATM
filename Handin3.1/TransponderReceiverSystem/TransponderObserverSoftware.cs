@@ -19,25 +19,27 @@ namespace TransponderReceiverSystem
         {
             string[] data = { };
             List<string> values = rawTransponderDataEventArgs.TransponderData;
-            data = ParseString(values);
-
-            if (ValidateTrack(data))
+            foreach (var value in values)
             {
-                TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
+                data = ParseString(value);
+                if (ValidateTrack(data))
+                {
+                    data[4] = FormatTimestamp(data[4]);
+                    TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
+                }
+                //else something
             }
-            //else nothing ??
         }
 
-        public string[] ParseString(List<string> values)
+        //Returns string array
+        public string[] ParseString(string values)
         {
             string[] data = {};
             string[] separators = { ";" };
-            foreach (var value in values)
-            {
-                data = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-            }
+            data = values.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             return data;
         }
+
         public bool ValidateTrack(string[] data)
         {
             int minXCoordinate = 10000;
@@ -46,8 +48,11 @@ namespace TransponderReceiverSystem
             int maxYCoordinate = 90000;
             int minAltitue = 500;
             int maxAltitude = 20000;
+            int x_coordinate = int.Parse(data[1]);
+            int y_coordinate = int.Parse(data[2]);
+            int altitude = int.Parse(data[3]);
 
-            if (int.Parse(data[1]) > minXCoordinate & int.Parse(data[1]) < maxXCoordinate & )
+            if (x_coordinate > minXCoordinate & x_coordinate < maxXCoordinate & )
             {
 
                 return true;
@@ -56,6 +61,12 @@ namespace TransponderReceiverSystem
             {
                 return false;
             }
+        }
+
+        public string FormatTimestamp(string timestamp)
+        {
+
+            return timestamp;
         }
     }
 }
