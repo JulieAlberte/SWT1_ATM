@@ -9,6 +9,8 @@ namespace TransponderReceiverSystem
 {
     public class TransponderObserverSoftware
     {
+        public List<TrackOjects> TrackObjectList { get; private set; }
+
         public TransponderObserverSoftware()
         {
             var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
@@ -36,6 +38,7 @@ namespace TransponderReceiverSystem
                 {
                     data[4] = myTrackFormation.FormatTimestamp(data[4]);
                     TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
+                    TrackObjectList.Add(td);
                 }
                 else
                 {

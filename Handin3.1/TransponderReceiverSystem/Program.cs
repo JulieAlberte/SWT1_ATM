@@ -13,6 +13,9 @@ namespace TransponderReceiverSystem
         static void Main(string[] args)
         {
             TransponderObserverSoftware tr = new TransponderObserverSoftware();
+            Print myprinter = new Print();
+            myprinter.PrintTrack(tr);
+
             Console.ReadKey();
         }
     }
