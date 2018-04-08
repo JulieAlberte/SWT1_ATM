@@ -8,14 +8,9 @@ namespace TransponderReceiverSystem
 {
     public class TrackParser
     {
-
-        public TrackParser()
+        public static string[] ParseString(string values)
         {
-
-        }
-        static public string[] ParseString(string values)
-        {
-            string[] data = { };
+            string[] data = {};
             string[] separators = { ";" };
             data = values.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             return data;

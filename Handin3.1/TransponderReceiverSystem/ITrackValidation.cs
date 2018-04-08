@@ -2,6 +2,6 @@
 {
     public interface ITrackValidation
     {
-        bool ValidateTrack(string[] track);
+        bool ValidateTrack(string xcoordinate, string ycoordinate, string altitude);
     }
 }
