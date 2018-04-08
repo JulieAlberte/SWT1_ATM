@@ -26,23 +26,22 @@ namespace TransponderReceiverSystem
 
         public void CreateTrackObject(List<string> values)
         {
-            TrackValidation myTackValidation = new TrackValidation();
-            TrackFormation myTrackFormation = new TrackFormation();
+            ITrackValidation myTackValidation = new TrackValidation();
+            ITrackFormation myTrackFormation = new TrackFormation();
 
-            string[] data = {};
-
-            foreach (string value in values)
+            foreach (var value in values)
             {
-                data = TrackParser.ParseString(value);
+                string[] data = TrackParser.ParseString(value);
                 if (myTackValidation.ValidateTrack(data[1], data[2], data[3]))
                 {
-                    data[4] = myTrackFormation.FormatTimestamp(data[4]);
+                    Console.WriteLine("something");
+                    //data[4] = myTrackFormation.FormatTimestamp(data[4]);
                     TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
                     TrackObjectList.Add(td);
                 }
                 else
                 {
-                    Console.WriteLine("Not in area");
+                    //Console.WriteLine("Not in area");
                 }
             }
         }
