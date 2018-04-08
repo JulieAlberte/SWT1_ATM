@@ -8,11 +8,11 @@ namespace TransponderReceiverSystem
 {
     public class TrackOjects
     {
-        private string _tag { get; set; }
-        private string _x_coordinate { get; set; }
-        private string _y_coordinate { get; set; }
-        private string _altitude { get; set; }
-        private string _timestamp { get; set; }
+        public string _tag { get; private set; }
+        public string _x_coordinate { get; private set; }
+        public string _y_coordinate { get; private set; }
+        public string _altitude { get;  private set; }
+        public string _timestamp { get; private set; }
         public TrackOjects(string tag, string x_coordinate, string y_coordinate, string altitude, string timestamp)
         {
             _tag = tag;

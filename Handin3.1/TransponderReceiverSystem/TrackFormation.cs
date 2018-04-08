@@ -85,7 +85,7 @@ namespace TransponderReceiverSystem
             // Fx bliver 20151006213456789 til: October 6th, 2015, at 21:34:56 and 789 milliseconds
             string output = formattedMonth + " " + day + ", " + year + ", at " + hour + ":" + minute + ":" + second +
                             " and " + millisecond + " milliseconds";
-            return timestamp;
+            return output;
             //return year,date,month,....
         }
 

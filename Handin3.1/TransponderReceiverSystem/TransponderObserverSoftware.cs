@@ -9,7 +9,7 @@ namespace TransponderReceiverSystem
 {
     public class TransponderObserverSoftware
     {
-        public List<TrackOjects> TrackObjectList { get; private set; }
+        public List<TrackOjects> TrackObjectList = new List<TrackOjects>();
 
         public TransponderObserverSoftware()
         {
@@ -28,20 +28,22 @@ namespace TransponderReceiverSystem
         {
             ITrackValidation myTackValidation = new TrackValidation();
             ITrackFormation myTrackFormation = new TrackFormation();
+            IPrint myPrinter = new Print();
 
             foreach (var value in values)
             {
                 string[] data = TrackParser.ParseString(value);
                 if (myTackValidation.ValidateTrack(data[1], data[2], data[3]))
                 {
-                    Console.WriteLine("something");
-                    //data[4] = myTrackFormation.FormatTimestamp(data[4]);
+                    Console.WriteLine("In area!");
+                    data[4] = myTrackFormation.FormatTimestamp(data[4]);
                     TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
                     TrackObjectList.Add(td);
+                    myPrinter.PrintTrackTrue(td);
                 }
                 else
                 {
-                    //Console.WriteLine("Not in area");
+                   // Console.WriteLine("Not in area");
                 }
             }
         }
