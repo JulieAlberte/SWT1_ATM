@@ -34,32 +34,26 @@ namespace TransponderReceiverSystem
             _minAltitue = 500;
             _maxAltitude = 20000;
         }
-        public bool ValidateTrack(string x_coordinate, string y_coordinate, string altitude)
+        
+        public bool ValidateTrack(string xcoordinate, string ycoordinate, string altitude)
         {
-            //If (indenfor firkant)
-            //return true;
-            //Hvis ikke
-            //Return false
-            return true;
+            int x_coordinate = int.Parse(xcoordinate);
+            int y_coordinate = int.Parse(ycoordinate);
+            int a_altitude = int.Parse(altitude);
+
+            if (x_coordinate > _minXCoordinate && x_coordinate < _maxXCoordinate
+                && y_coordinate > _minYCoordinate && y_coordinate < _maxYCoordinate
+                && a_altitude > _minAltitue && a_altitude < _maxAltitude)
+            {
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        
 
-        
-        //static public bool ValidateTrack(string[] data)
-        //{
-        //    int x_coordinate = int.Parse(data[1]);
-        //    int y_coordinate = int.Parse(data[2]);
-        //    int altitude = int.Parse(data[3]);
-
-        //    if (x_coordinate > minXCoordinate & x_coordinate < maxXCoordinate &)
-        //    {
-
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+       
     }
 }
