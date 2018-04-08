@@ -9,12 +9,12 @@ namespace TransponderReceiverSystem.Test.Unit
     [Author("SWTTeam1")]
     public class TransponderDataUnitTest
     {
-        private TransponderData _uut;
+        private TrackOjects _uut;
 
         [SetUp]
         public void Setup()
         {
-            _uut = new TransponderData();
+            _uut = new TrackOjects();
         }
     }
 }

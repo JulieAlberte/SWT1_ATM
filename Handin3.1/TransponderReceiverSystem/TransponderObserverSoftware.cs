@@ -17,12 +17,44 @@ namespace TransponderReceiverSystem
 
         private void TransponderReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)
         {
-            string[] separators = {";"};
+            string[] data = { };
             List<string> values = rawTransponderDataEventArgs.TransponderData;
+            data = ParseString(values);
+
+            if (ValidateTrack(data))
+            {
+                TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
+            }
+            //else nothing ??
+        }
+
+        public string[] ParseString(List<string> values)
+        {
+            string[] data = {};
+            string[] separators = { ";" };
             foreach (var value in values)
             {
-                string[] data = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-                TransponderData td = new TransponderData(data[0], data[1], data[2], data[3], data[4]);
+                data = value.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            }
+            return data;
+        }
+        public bool ValidateTrack(string[] data)
+        {
+            int minXCoordinate = 10000;
+            int maxXCoordinate = 90000;
+            int minYCoordinate = 10000;
+            int maxYCoordinate = 90000;
+            int minAltitue = 500;
+            int maxAltitude = 20000;
+
+            if (int.Parse(data[1]) > minXCoordinate & int.Parse(data[1]) < maxXCoordinate & )
+            {
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
