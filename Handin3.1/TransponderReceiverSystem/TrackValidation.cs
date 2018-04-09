@@ -41,9 +41,9 @@ namespace TransponderReceiverSystem
             int yCoordinate = int.Parse(ycoordinate);
             int aAltitude = int.Parse(altitude);
 
-            if (xCoordinate > _minXCoordinate && xCoordinate < _maxXCoordinate
-                && yCoordinate > _minYCoordinate && yCoordinate < _maxYCoordinate
-                && aAltitude > _minAltitude && aAltitude < _maxAltitude)
+            if (xCoordinate >= _minXCoordinate && xCoordinate <= _maxXCoordinate
+                && yCoordinate >= _minYCoordinate && yCoordinate <= _maxYCoordinate
+                && aAltitude >= _minAltitude && aAltitude <= _maxAltitude)
             {
 
                 return true;

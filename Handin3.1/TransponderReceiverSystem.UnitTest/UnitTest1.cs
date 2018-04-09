@@ -11,7 +11,13 @@ namespace TransponderReceiverSystem.UnitTest
         public void ValidateTrack_NordVestPunktmedmaxAltitude_returnsTrue()
         {
             var uut = new TrackValidation();
-            Assert.That(uut.ValidateTrack("10001", "89999", "19999"), Is.EqualTo(true));
+            Assert.That(uut.ValidateTrack("10000", "90000", "20000"), Is.EqualTo(true));
+        }
+
+        public void ValidateTrack_NordvestpunktmedminAltitude_returnsTrue()
+        {
+            var uut = new TrackValidation();
+            Assert.That(uut.ValidateTrack("10000","90000","500"));
         }
 
         [Test]
