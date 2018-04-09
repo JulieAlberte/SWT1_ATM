@@ -8,22 +8,30 @@ namespace TransponderReceiverSystem.UnitTest
     class TrackvValidationUnitTest
     {
         [Test]
-        public void ValidateTrack_NordVestPunktmedmaxAltitude_returnsTrue()
+        public void ValidateTrack_NordVestPunktmedMaxAltitude_returnsTrue()
         {
             var uut = new TrackValidation();
             Assert.That(uut.ValidateTrack("10000", "90000", "20000"), Is.EqualTo(true));
         }
 
-        public void ValidateTrack_NordvestpunktmedminAltitude_returnsTrue()
+        [Test]
+        public void ValidateTrack_NordvestpunktmedMinAltitude_returnsTrue()
         {
             var uut = new TrackValidation();
             Assert.That(uut.ValidateTrack("10000","90000","500"));
         }
 
         [Test]
-        public void ValidateTrack_NordoesttPunkt_returnsTrue()
+        public void ValidateTrack_NordoesttPunktmedMaxAltitude_returnsTrue()
         {
             var uut = new TrackValidation();
+            Assert.That(uut.ValidateTrack("90000","90000","20000"), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void ValidateTrack_NordoestPunktmedMinAltitude_returnsTrue()
+        {
+            var uut= new TrackValidation();
             Assert.That(uut.ValidateTrack("90000","90000","500"), Is.EqualTo(true));
         }
     }
