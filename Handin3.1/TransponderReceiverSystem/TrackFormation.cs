@@ -23,7 +23,7 @@ namespace TransponderReceiverSystem
         November = 11,
         December = 12
     }
-    class TrackFormation : ITrackFormation
+   public class TrackFormation : ITrackFormation
     {
         //private int year { set; get; }
         public string FormatTimestamp(string timestamp)
