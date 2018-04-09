@@ -94,6 +94,45 @@ namespace TransponderReceiverSystem.UnitTest
             Assert.That(uut.ValidateTrack(xCor, yCor, alt), Is.EqualTo(result));
         }
 
+        // nu testes der for flyet der er inde i vores areal mål
+        [TestCase("30000", "80000", "15000", true)] //max altitude over max samt uden for nordvest punkt
+        [TestCase("20000", "74890", "520", true)] //min altitude under min
+        public void ValidateTrack_NorthwestWithMaxandMinAltitudeInArea_returnsTrue(string xCor, string yCor, string alt,
+            bool result)
+        {
+            var uut = new TrackValidation();
+            Assert.That(uut.ValidateTrack(xCor, yCor, alt), Is.EqualTo(result));
+        }
+
+        [TestCase("80000", "68900", "16000", true)] //max altitude over max samt uden for nordsyd punkt
+        [TestCase("70000", "80000", "520", true)] //min altitude under min
+        public void ValidateTrack_NortheastWithMaxandMinAltitudeInArea_returnsTrue(string xCor, string yCor, string alt,
+            bool result)
+        {
+            var uut = new TrackValidation();
+            Assert.That(uut.ValidateTrack(xCor, yCor, alt), Is.EqualTo(result));
+        }
+
+        [TestCase("12000", "10000", "10000", true)] //max altitude over max samt uden for sydvest punkt
+        [TestCase("10000", "19999", "550", true)] //min altitude under min
+
+        public void ValidateTrack_SouthwestWithMaxandMinAltitudeInArea_returnsTrue(string xCor, string yCor, string alt,
+            bool result)
+        {
+            var uut = new TrackValidation();
+            Assert.That(uut.ValidateTrack(xCor, yCor, alt), Is.EqualTo(result));
+        }
+
+        [TestCase("80000", "15000", "18888", true)] //max altitude over max samt uden for sydøst punkt
+        [TestCase("80001", "10000", "600", true)]
+
+        public void ValidateTrack_SoutheastWithMaxandMinAltitudeInArea_returnsFalse(string xCor, string yCor, string alt,
+            bool result)
+        {
+            var uut = new TrackValidation();
+            Assert.That(uut.ValidateTrack(xCor, yCor, alt), Is.EqualTo(result));
+        }
+
     }
 }
 
