@@ -11,10 +11,14 @@ namespace TransponderReceiverSystem
     {
         public List<TrackOjects> TrackObjectList = new List<TrackOjects>();
 
-        public TransponderObserverSoftware()
+        public TransponderObserverSoftware(ITransponderReceiver tdReceiver)
         {
-            var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
-            transponderReceiver.TransponderDataReady+= TransponderReceiverOnTransponderDataReady;
+            var transponderReciever = tdReceiver;
+            tdReceiver.TransponderDataReady += TransponderReceiverOnTransponderDataReady;
+
+           
+            //var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            //transponderReceiver.TransponderDataReady+= TransponderReceiverOnTransponderDataReady;
         }
 
         private void TransponderReceiverOnTransponderDataReady(object sender,
