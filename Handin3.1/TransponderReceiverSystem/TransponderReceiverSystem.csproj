@@ -51,7 +51,6 @@
     <Compile Include="ITrackValidation.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="TrackFormation.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrackOjects.cs" />
     <Compile Include="TrackParser.cs" />
