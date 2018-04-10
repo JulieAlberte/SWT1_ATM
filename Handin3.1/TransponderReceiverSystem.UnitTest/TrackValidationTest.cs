@@ -5,7 +5,7 @@ using TransponderReceiverSystem;
 namespace TransponderReceiverSystem.UnitTest
 {
     [TestFixture]
-    class TrackvValidationUnitTest
+    class TrackValidationTest
     {
         //Tester nordelige punkter 
         [Test]

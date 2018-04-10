@@ -69,7 +69,7 @@
   <ItemGroup>
     <Compile Include="DateUnitTest.cs" />
     <Compile Include="TransponderEventTesting.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TrackValidationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
