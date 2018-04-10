@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TransponderReceiver;
 
 namespace TransponderReceiverSystem.Application
 {
@@ -10,7 +11,8 @@ namespace TransponderReceiverSystem.Application
     {
         static void Main(string[] args)
         {
-            TransponderObserverSoftware tr = new TransponderObserverSoftware();
+            var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            TransponderObserverSoftware tr = new TransponderObserverSoftware(transponderReceiver);
             Console.ReadKey();
         }
     }
