@@ -4,23 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransponderReceiver;
-using TransponderReceiverSystem;
 
-namespace TransponderReceiverSystem
+
+namespace TransponderReceiverSystem.Classes
 {
     public class TransponderObserverSoftware
     {
+        
         public List<TrackOjects> TrackObjectList = new List<TrackOjects>();
+        //private ITransponderReceiver _transponderReceiver;
 
-        public TransponderObserverSoftware(ITransponderReceiver tdReceiver)
+        public TransponderObserverSoftware()
         {
-            //var transponderReciever = new TransponderReceiver()
-            //    //tdReceiver);
+            //_transponderReceiver = tdReceiver;
             //tdReceiver.TransponderDataReady += TransponderReceiverOnTransponderDataReady;
 
-           
-            //var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
-            //transponderReceiver.TransponderDataReady+= TransponderReceiverOnTransponderDataReady;
+
+
+            var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            transponderReceiver.TransponderDataReady+= TransponderReceiverOnTransponderDataReady;
         }
 
         private void TransponderReceiverOnTransponderDataReady(object sender,
@@ -49,7 +51,7 @@ namespace TransponderReceiverSystem
                 }
                 else
                 {
-                   // Console.WriteLine("Not in area");
+                    // Console.WriteLine("Not in area");
                 }
             }
         }

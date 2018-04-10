@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateUnitTest.cs" />
+    <Compile Include="Properties\TrackValidation.cs" />
     <Compile Include="TransponderEventTesting.cs" />
     <Compile Include="TrackValidationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,9 +81,9 @@
       <Project>{ca075caa-29fd-497b-a192-b8f930097938}</Project>
       <Name>TransponderReceiverSystem.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TransponderReceiverSystem\TransponderReceiverSystem.csproj">
-      <Project>{bcceddcb-8647-4ac3-9019-8a52f72f2f88}</Project>
-      <Name>TransponderReceiverSystem</Name>
+    <ProjectReference Include="..\TransponderReceiverSystem.Classes\TransponderReceiverSystem.Classes.csproj">
+      <Project>{ccf4a36a-a7d6-4f14-b46e-8fd801ee999e}</Project>
+      <Name>TransponderReceiverSystem.Classes</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

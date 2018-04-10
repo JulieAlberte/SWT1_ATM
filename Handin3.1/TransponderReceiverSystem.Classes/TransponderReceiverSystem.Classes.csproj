@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA075CAA-29FD-497B-A192-B8F930097938}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>TransponderReceiverSystem.Application</RootNamespace>
-    <AssemblyName>TransponderReceiverSystem.Application</AssemblyName>
+    <ProjectGuid>{CCF4A36A-A7D6-4F14-B46E-8FD801EE999E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TransponderReceiverSystem.Classes</RootNamespace>
+    <AssemblyName>TransponderReceiverSystem.Classes</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,17 +44,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Interface\IPrint.cs" />
+    <Compile Include="Interface\ITrackFormation.cs" />
+    <Compile Include="Interface\ITrackValidation.cs" />
+    <Compile Include="Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TransponderReceiverSystem.Classes\TransponderReceiverSystem.Classes.csproj">
-      <Project>{ccf4a36a-a7d6-4f14-b46e-8fd801ee999e}</Project>
-      <Name>TransponderReceiverSystem.Classes</Name>
-    </ProjectReference>
+    <Compile Include="TrackFormation.cs" />
+    <Compile Include="TrackObjects.cs" />
+    <Compile Include="TrackParser.cs" />
+    <Compile Include="TrackValidation.cs" />
+    <Compile Include="TransponderObserverSoftware.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

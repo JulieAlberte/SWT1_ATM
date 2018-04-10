@@ -1,6 +1,6 @@
 ﻿//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using TransponderReceiverSystem;
+using TransponderReceiverSystem.Classes;
 
 namespace TransponderReceiverSystem.UnitTest
 {
