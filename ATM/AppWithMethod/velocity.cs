@@ -13,6 +13,7 @@ namespace AppWithMethod
         {
             int meters = (td2.X - td1.X);
             TimeSpan time = (td2.Timestamp - td1.Timestamp);
+            //To get velocity in m/s time.TotalSeconds
             double velocity = meters / time.TotalSeconds;
             return velocity;
         }
