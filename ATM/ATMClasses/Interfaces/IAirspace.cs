@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppWithMethod
+namespace ATMClasses.Interfaces
 {
-    class Course
+    public interface IAirspace
     {
+        bool InValidAirspace(ITrackDecoding track);
     }
 }

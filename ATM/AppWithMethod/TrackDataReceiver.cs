@@ -10,7 +10,7 @@ namespace AppWithMethod
 {
     class TrackDataReceiver : ITrackReceiver
     {
-        Velocity vc = new Velocity();
+        Calculator vc = new Calculator();
         public void ReceiveTracks(List<TrackData> tracks)
         {
             foreach (var track in tracks)
