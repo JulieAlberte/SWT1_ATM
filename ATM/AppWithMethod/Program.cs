@@ -19,6 +19,7 @@ namespace AppWithMethod
 
             var decoder = new DecodingWithMethod(transponderDataReceiver, trackReceiver);
 
+            //trackReceiver.
             System.Console.ReadLine();
         }
     }

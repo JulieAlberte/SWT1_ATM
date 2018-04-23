@@ -10,20 +10,12 @@ namespace AppWithMethod
 {
     class TrackDataReceiver : ITrackReceiver
     {
+        Velocity vc = new Velocity();
         public void ReceiveTracks(List<TrackData> tracks)
         {
             foreach (var track in tracks)
             {
                 System.Console.WriteLine(track);
-            }
-        }
-
-        public void Print(List<TrackData> tracks)
-        {
-            foreach (var track in tracks)
-            {
-                Console.WriteLine(track.Tag);
-                Console.WriteLine();
             }
         }
     }
