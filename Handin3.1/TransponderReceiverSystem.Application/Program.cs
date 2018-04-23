@@ -12,8 +12,12 @@ namespace TransponderReceiverSystem.Application
     {
         static void Main(string[] args)
         {
-            var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
-            TransponderObserverSoftware tr = new TransponderObserverSoftware();
+            ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+
+            var decoder = new TransponderObserverSoftware(transponderDataReceiver);
+
+
+
             Console.ReadKey();
         }
     }

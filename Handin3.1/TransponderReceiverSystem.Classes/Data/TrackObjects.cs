@@ -13,6 +13,9 @@ namespace TransponderReceiverSystem.Classes
         public string _y_coordinate { get; private set; }
         public string _altitude { get; private set; }
         public string _timestamp { get; private set; }
+        public int _velocity { get; set; }
+        public int _course { get; set; }
+
         public TrackOjects(string tag, string x_coordinate, string y_coordinate, string altitude, string timestamp)
         {
             _tag = tag;
@@ -20,6 +23,8 @@ namespace TransponderReceiverSystem.Classes
             _y_coordinate = y_coordinate;
             _altitude = altitude;
             _timestamp = timestamp;
+            _velocity = 0;
+            _course = 0;
         }
     }
 }

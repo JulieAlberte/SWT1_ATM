@@ -46,7 +46,6 @@ namespace TransponderReceiverSystem.Classes
                                                && yCoordinate >= _minYCoordinate && yCoordinate <= _maxYCoordinate
                                                && aAltitude >= _minAltitude && aAltitude <= _maxAltitude)
             {
-
                 return true;
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,25 +11,29 @@ namespace TransponderReceiverSystem.Classes
 {
     public class TransponderObserverSoftware
     {
+        public List<TrackOjects> TrackObjectList;
         
-        public List<TrackOjects> TrackObjectList = new List<TrackOjects>();
-        //private ITransponderReceiver _transponderReceiver;
-
-        public TransponderObserverSoftware()
+        public TransponderObserverSoftware(ITransponderReceiver rawReceiver)
         {
-            //_transponderReceiver = tdReceiver;
-            //tdReceiver.TransponderDataReady += TransponderReceiverOnTransponderDataReady;
-
-
-
-            var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
-            transponderReceiver.TransponderDataReady+= TransponderReceiverOnTransponderDataReady;
+            rawReceiver.TransponderDataReady += TransponderReceiverOnTransponderDataReady;
+            TrackObjectList = new List<TrackOjects>();
         }
 
         private void TransponderReceiverOnTransponderDataReady(object sender,
             RawTransponderDataEventArgs rawTransponderDataEventArgs)
         {
+            //Empty list
+            TrackObjectList.Clear();
+
+            //foreach (var track in rawTransponderDataEventArgs.TransponderData)
+            //{
+                
+            //}
+            
+            //Receives data into a list
             List<string> values = rawTransponderDataEventArgs.TransponderData;
+
+            //Validates, convertes, and adds to new list
             CreateTrackObject(values);
         }
 
@@ -37,7 +42,7 @@ namespace TransponderReceiverSystem.Classes
             ITrackValidation myTackValidation = new TrackValidation();
             ITrackFormation myTrackFormation = new TrackFormation();
             IPrint myPrinter = new Print();
-
+            
             foreach (var value in values)
             {
                 string[] data = TrackParser.ParseString(value);
@@ -48,10 +53,6 @@ namespace TransponderReceiverSystem.Classes
                     TrackOjects td = new TrackOjects(data[0], data[1], data[2], data[3], data[4]);
                     TrackObjectList.Add(td);
                     myPrinter.PrintTrackTrue(td);
-                }
-                else
-                {
-                    // Console.WriteLine("Not in area");
                 }
             }
         }

@@ -50,7 +50,7 @@
     <Compile Include="Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrackFormation.cs" />
-    <Compile Include="TrackObjects.cs" />
+    <Compile Include="Data\TrackObjects.cs" />
     <Compile Include="TrackParser.cs" />
     <Compile Include="TrackValidation.cs" />
     <Compile Include="TransponderObserverSoftware.cs" />
