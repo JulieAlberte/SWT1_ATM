@@ -12,6 +12,8 @@ using Castle.DynamicProxy.Generators;
 using NSubstitute;
 using NUnit.Framework;
 
+
+//This class is a unit test for Course
 namespace ATM.Unit.Test
 {
     [TestFixture]
