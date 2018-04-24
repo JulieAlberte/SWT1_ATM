@@ -8,18 +8,20 @@ using ATMClasses.Interfaces;
 
 namespace ATMClasses
 {
-    class TrackSeperation
+    class TrackSeperation : ITrackSeperation
     {
-        private readonly SeperationEventData _seperationEvent;
-        private readonly List<SeperationEventData> _seperationEventsList;
-        private readonly IFileLog _fileLog;
+        private readonly SeperationEventData _seperationEvent = new SeperationEventData();
+        private readonly List<SeperationEventData> _seperationEventsList = new List<SeperationEventData>();
+        private readonly IFileLog _fileLog = new FileLog();
 
-        public TrackSeperation()
-        {
-            _seperationEvent = new SeperationEventData();
-            _seperationEventsList = new List<SeperationEventData>();
-            _fileLog = new FileLog();
-        }
+        
+
+        //public TrackSeperation()
+        //{
+        //    _seperationEvent = new SeperationEventData();
+        //    _seperationEventsList = new List<SeperationEventData>();
+        //    _fileLog = new FileLog();
+        //}
 
         public void CheckForSeperation(List<TrackData> trackDatalList)
         {
