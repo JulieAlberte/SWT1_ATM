@@ -23,6 +23,9 @@ namespace ATMClasses
             _fileLog = fileLog;
         }
 
+        public TrackSeperation()
+        { }
+
         public void CheckForSeperation(List<TrackData> trackDatalList)
         {
             for (var i = 0; i < trackDatalList.Count; i++)
