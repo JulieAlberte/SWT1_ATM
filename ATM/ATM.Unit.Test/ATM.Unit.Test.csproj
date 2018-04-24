@@ -59,12 +59,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirspaceTest.cs" />
+    <Compile Include="CourseTest.cs" />
     <Compile Include="DecodingWithMethodTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VelocityTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppWithMethod\AppWithMethod.csproj">
+      <Project>{d04a77c7-a0ad-4d0d-8301-f3b67b703aee}</Project>
+      <Name>AppWithMethod</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ATMClasses\ATMClasses.csproj">
       <Project>{e95ddf21-0a6d-4bf1-9bc3-0ea4029924e9}</Project>
       <Name>ATMClasses</Name>
