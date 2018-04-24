@@ -13,9 +13,7 @@ namespace ATMClasses
         private readonly SeperationEventData _seperationEvent;
         private readonly List<SeperationEventData> _seperationEventsList;
         private readonly IFileLog _fileLog;
-
         
-
         public TrackSeperation(SeperationEventData seperationEvent, FileLog fileLog)
         {
             _seperationEvent = seperationEvent;
@@ -24,7 +22,11 @@ namespace ATMClasses
         }
 
         public TrackSeperation()
-        { }
+        {
+            _seperationEvent = new SeperationEventData();
+            _seperationEventsList = new List<SeperationEventData>();
+            _fileLog = new FileLog();
+        }
 
         public void CheckForSeperation(List<TrackData> trackDatalList)
         {
