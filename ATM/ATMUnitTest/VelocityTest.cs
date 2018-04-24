@@ -24,9 +24,7 @@ namespace ATM.Unit.Test
         private TrackData _track2;
 
         private ICalculateVel _uut;
-        //private List<TrackData> _trackDatas;
-
-
+     
         [SetUp]
         public void SetUp()
         {
@@ -41,8 +39,6 @@ namespace ATM.Unit.Test
                 X = 24689,
                 Y = 98765,
                 Timestamp = dateTime
-
-
             };
 
 
@@ -53,16 +49,6 @@ namespace ATM.Unit.Test
                 Y = 56565,
                 Timestamp = dateTime2
             };
-
-
-            //_trackDatas = new List<TrackData>
-            //{
-            //    _track1,
-            //    _track2
-            //};
-
-
-
         }
 
         [Test]
