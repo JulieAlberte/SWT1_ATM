@@ -1,39 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ATMClasses.Interfaces;
 
 namespace ATMClasses
 {
-    public class Airspace: IAirspace
+    public class Airspace : IAirspace
     {
-        public int _east;
-        public int _west;
-        public int _north;
-        public int _south;
-        public int _lower;
-        public int _upper;
+
+        private readonly int _coorHigher;
+        private readonly int _coorLower;
+        private readonly int _altHigher;
+        private readonly int _altLower;
 
 
-        public Airspace() : this(90000, 10000, 90000, 10000, 500, 20000)
-        { }
 
-        private Airspace(int E, int W, int N, int S, int L, int U)
+        public Airspace(int coorHigher, int coorLower, int altHigher, int altLower)
         {
-            _east = E;
-            _west = W;
-            _north = N;
-            _south = S;
-            _lower = L;
-            _upper = U;
+            _coorHigher = coorHigher;
+            _coorLower = coorLower;
+            _altHigher = altHigher;
+            _altLower = altLower; 
         }
 
-        public bool InValidAirspace(ITrackDecoding track)
+
+
+        public bool ValidAirspace(IPosition position)
         {
-            throw new NotImplementedException();
+            return ValidAirspaceCoordinates(position.X, position.Y) && ValidAltitude(position.Altitude);
         }
+
+        private bool ValidAirspaceCoordinates(int x, int y)
+        {
+            return ValidXCoordinate(x) && ValidYCoordinate(y);
+        }
+
+        private bool ValidAltitude(int altitude)
+        {
+            return altitude <= _altHigher && altitude >= _altLower;
+        }
+
+        private bool ValidXCoordinate(int x)
+        {
+            return x <= _coorHigher && x >= _coorLower;
+
+        }
+
+        private bool ValidYCoordinate(int y)
+        {
+            return y <= _coorHigher && y >= _coorLower;
+        }
+
+
     }
 }

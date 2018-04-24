@@ -8,6 +8,6 @@ namespace ATMClasses.Interfaces
 {
     public interface IAirspace
     {
-        bool InValidAirspace(ITrackDecoding track);
+        bool ValidAirspace(IPosition position);
     }
 }
