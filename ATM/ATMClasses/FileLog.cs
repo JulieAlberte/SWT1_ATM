@@ -21,7 +21,7 @@ namespace ATMClasses
             {
                 for(int i = 0; i < seperationEvents.Count; i++)
                 {
-                    file.WriteLine(seperationEvents[i]);
+                    file.WriteLine(i);
                 }
             }
         }

@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using ATMClasses.Data;
 using NSubstitute; 
 using NUnit.Framework;
+using NUnit; 
+using ATMClasses; 
+using ATMClasses.Interfaces;
+using ATMClasses.Calculate;
+using NUnit.Framework.Internal;
 
 namespace ATM.Unit.Test
 {
@@ -13,16 +18,12 @@ namespace ATM.Unit.Test
     [TestFixture]
     class VelocityTest
     {
-        //private IVelocity _testVelocity;
-        private TrackData objData;
-        private TrackData newObjData;
 
 
 
         [SetUp]
-        public void SetUp()
+        public void SetUo()
         {
-            
 
         }
 

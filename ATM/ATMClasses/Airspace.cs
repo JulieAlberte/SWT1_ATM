@@ -15,7 +15,8 @@ namespace ATMClasses
         private readonly int _altHigher;
         private readonly int _altLower;
 
-
+      
+      
 
         public Airspace(int coorHigher, int coorLower, int altHigher, int altLower)
         {
@@ -25,7 +26,7 @@ namespace ATMClasses
             _altLower = altLower; 
         }
 
-
+       
 
         public bool ValidAirspace(IPosition position)
         {
