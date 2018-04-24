@@ -16,12 +16,13 @@ namespace ATMClasses
         public FileLog(string filePath = @"Log.Txt") => FilePath = filePath;
         public void LogToFile(List<SeperationEvent> seperationEvents)
         {
-
-
-
-            using (StreamWriter writer = new StreamWriter(FilePath, true))
+            //Writes every object in seperationEvents list into a file, per default "Log.txt"
+            using (StreamWriter file = new StreamWriter(FilePath, true))
             {
-
+                for(int i = 0; i < seperationEvents.Count; i++)
+                {
+                    file.WriteLine(seperationEvents[i]);
+                }
             }
         }
     }

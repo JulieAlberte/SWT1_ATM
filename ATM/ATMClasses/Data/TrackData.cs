@@ -30,7 +30,7 @@ namespace ATMClasses.Data
 
         public override string ToString()
         {
-            var str = $"{Tag}: ({X}, {Y}) ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
+            var str = $"{Tag}: ({X}, {Y}) ALT: {Altitude} meters, VEL: {Velocity} m/s, CRS: {Course} degrees";
             return str;
         }
     }

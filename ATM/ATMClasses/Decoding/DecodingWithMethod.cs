@@ -95,6 +95,7 @@ namespace ATMClasses.Decoding
 
         public void CalculateCourse(TrackData oldTrackData, TrackData newTrackData)
         {
+            //Needs to added degrees "nord" or "south" and so on
             var angleDeg = Math.Atan2(-(newTrackData.Y - oldTrackData.Y), newTrackData.X - oldTrackData.X) * 180 / Math.PI;
 
             angleDeg += 90;
