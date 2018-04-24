@@ -8,7 +8,7 @@ using ATMClasses.Data;
 
 namespace ATMClasses.Calculate
 {
-    class CalculateVelocity : ICalculateVel
+    public class CalculateVelocity : ICalculateVel
     {
         private double x1 { get; set; }
         private double x2 { get; set; }
