@@ -80,30 +80,7 @@ namespace ATMClasses.Decoding
             return track;
         }
 
-        public void CalculateVelocity(TrackData oldTrackData, TrackData newTrackData)//, DateTime lastTime, DateTime currentTime)
-        {
-            //Finder afstanden mellem gamle og nye punkt
-            double dist = Math.Sqrt(Math.Pow((newTrackData.X - oldTrackData.X), 2) + Math.Pow((newTrackData.Y - oldTrackData.Y), 2));
-            
-            //Tiden der er gået
-            var time = newTrackData.Timestamp - oldTrackData.Timestamp;
-            //Beregner Velocity
-            var velocity = time.TotalSeconds == 0 ? 0 : Math.Round(dist / time.TotalSeconds);
-            //Sætter velocity i objektet
-            newTrackData.Velocity = velocity;
-        }
 
-        public void CalculateCourse(TrackData oldTrackData, TrackData newTrackData)
-        {
-            //Needs to added degrees "nord" or "south" and so on
-            var angleDeg = Math.Atan2(-(newTrackData.Y - oldTrackData.Y), newTrackData.X - oldTrackData.X) * 180 / Math.PI;
 
-            angleDeg += 90;
-
-            if (angleDeg < 0)
-                angleDeg += 360;
-
-            newTrackData.Course = (int)angleDeg;
-        }
     }
 }
