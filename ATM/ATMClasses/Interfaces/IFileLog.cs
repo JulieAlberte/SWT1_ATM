@@ -8,6 +8,6 @@ namespace ATMClasses.Interfaces
 {
     public interface IFileLog
     {
-        void LogToFile(List<SeperationEvent> seperationEvents);
+        void LogToFile(List<SeperationEventData> seperationEvents);
     }
 }

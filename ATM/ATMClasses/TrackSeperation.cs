@@ -10,18 +10,18 @@ namespace ATMClasses
 {
     class TrackSeperation
     {
-        private readonly SeperationEvent _seperationEvent;
-        private readonly ISeperationEventController _seperationEventController;
-        private readonly List<SeperationEvent> _seperationEventsList;
+        private readonly SeperationEventData _seperationEvent;
+        private readonly List<SeperationEventData> _seperationEventsList;
+        private readonly IFileLog _fileLog;
 
-        public TrackSeperation(SeperationEvent seperationEvent, ISeperationEventController seperationEventController)
+        public TrackSeperation()
         {
-            _seperationEvent = seperationEvent;
-            _seperationEventController = seperationEventController;
-            _seperationEventsList = new List<SeperationEvent>();
+            _seperationEvent = new SeperationEventData();
+            _seperationEventsList = new List<SeperationEventData>();
+            _fileLog = new FileLog();
         }
 
-        void checkForSeperation(List<TrackData> trackDatalList)
+        public void CheckForSeperation(List<TrackData> trackDatalList)
         {
             for (var i = 0; i < trackDatalList.Count; i++)
             {
@@ -54,7 +54,8 @@ namespace ATMClasses
                             _seperationEvent.TimeOfEvent = timeOfEvent;
 
                             _seperationEventsList.Add(_seperationEvent);
-                            _seperationEventController.CoflictDetected(_seperationEventsList);
+                            _fileLog.LogToFile(_seperationEventsList);
+                            Console.WriteLine("Warning!!");
                         }
                     }
                 }

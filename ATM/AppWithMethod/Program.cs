@@ -14,13 +14,13 @@ namespace AppWithMethod
         static void Main(string[] args)
         {
             Console.Title = "Air Monitoring System";
+
             ITransponderReceiver transponderDataReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
             ITrackReceiver trackReceiver = new TrackDataReceiver();
 
             var decoder = new DecodingWithMethod(transponderDataReceiver, trackReceiver);
 
-            //trackReceiver.
             System.Console.ReadLine();
         }
     }

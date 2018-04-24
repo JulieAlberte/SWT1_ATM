@@ -10,7 +10,6 @@ namespace ATMClasses
 {
     public class Track : ITrack
     {
-      
         public TrackData Convert(string data)
         {
             TrackData track = new TrackData();

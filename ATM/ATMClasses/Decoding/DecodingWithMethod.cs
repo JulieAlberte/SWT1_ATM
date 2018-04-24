@@ -7,92 +7,70 @@ using ATMClasses.Data;
 using ATMClasses.Interfaces;
 using TransponderReceiver;
 using ATMClasses.Calculate;
+using ATMClasses.Calculate.Interface;
 
 
 namespace ATMClasses.Decoding
 {
     public class DecodingWithMethod
     {
-        private List<TrackData> trackList;
-        private ITrackReceiver outputTrackReceiver;
-        private List<TrackData> tempTrackList;
-
+        private List<TrackData> _trackList;
+        private ITrackReceiver _outputTrackReceiver;
+        private List<TrackData> _tempTrackList;
+        private ICalculateCourse _calculateCourse;
+        private ICalculateVel _calculateVelocity;
+        private TrackValidation _trackValidation;
+        private Track _track;
+        private TrackSeperation _trackSeperation;
+        
         public DecodingWithMethod(ITransponderReceiver rawReceiver, ITrackReceiver trackReceiver)
         {
+            //When data from flight bleeps in
             rawReceiver.TransponderDataReady += OnRawData;
 
-            outputTrackReceiver = trackReceiver;
-
-            trackList = new List<TrackData>();
-            tempTrackList = new List<TrackData>();
+            _trackList = new List<TrackData>();
+            _outputTrackReceiver = trackReceiver;
+            _tempTrackList = new List<TrackData>();
+            _calculateCourse = new CalculateCourse();
+            _calculateVelocity = new CalculateVelocity();
+            _trackValidation = new TrackValidation();
+            _track = new Track();
+            _trackSeperation = new TrackSeperation();
         }
 
         public void OnRawData(object o, RawTransponderDataEventArgs args)
         {
-            Airspace airspace = new Airspace(90000,10000,20000,500);
-            TrackValidation TV = new TrackValidation();
-            //Sletter tempTrackList
-            tempTrackList.Clear();
-            //Gemmer gammel data fra trackList i templist, til beregning af velocity og course
-            tempTrackList = trackList.GetRange(0, trackList.Count);
-            //Sletter trackList
-            trackList.Clear();
+            _tempTrackList.Clear();
+            //Saves old data from _trackList into _tempTrackList
+            _tempTrackList = _trackList.GetRange(0, _trackList.Count);
+            _trackList.Clear();
            
             //Adds and converts new flight(s)
             foreach (var track in args.TransponderData)
             {
-                //Converts into a trackobject 
-                Track track1 = new Track();
-                //IPosition position = new Position();
-                var td = track1.Convert(track);
+                var td = _track.Convert(track);
+                
                 //Validates if it's in our area
-                //if (airspace.ValidAirspace(position))
-                if (TV.ValidateTrack(td.X, td.Y, td.Altitude))
+                if (_trackValidation.ValidateTrack(td.X, td.Y, td.Altitude))
                 {
-                    //Tjekker hele den gamle liste igennem, om der findes data om flyet, og derfor kan beregne velocity og course
-                    for (int i = 0; i < tempTrackList.Count; i++)
+                    //Forloop to check if the old list, _tempTrackList, holds any data about the flight
+                    for (int i = 0; i < _tempTrackList.Count; i++)
                         {
-                            //Tjekker på ens tags mellem gamle data og ny data
-                            if (tempTrackList[i].Tag.Equals(td.Tag, StringComparison.OrdinalIgnoreCase))
+                            if (_tempTrackList[i].Tag.Equals(td.Tag, StringComparison.OrdinalIgnoreCase))
                             {
-                                //Beregner og sætter velocity og course
-                                CalculateVelocity calculateVelocity = new CalculateVelocity();
-                                CalculateCourse calculateCourse = new CalculateCourse();
-                                
-                                calculateVelocity.CalVelocity(tempTrackList[i],td);
-                                calculateCourse.CalCourse(tempTrackList[i],td);
-
-                                //CalculateVelocity(tempTrackList[i], td);
-                                //CalculateCourse(tempTrackList[i], td);
+                                //If it holds any data about the flight, calculate veocity and course
+                                _calculateVelocity.CalVelocity(_tempTrackList[i],td);
+                                _calculateCourse.CalCourse(_tempTrackList[i],td);
                             }
                         }
-                    //Tilføjer ny data til listen
-                    trackList.Add(td);
+                    //Adds flight to _trackList
+                    _trackList.Add(td);
                 }
             }
 
-            //printer all tracks i listen
-            outputTrackReceiver.ReceiveTracks(trackList); 
+            _trackSeperation.CheckForSeperation(_trackList);
+            //Prints all tracks in _trackList
+            _outputTrackReceiver.ReceiveTracks(_trackList); 
         }
-
-
-        //private TrackData Convert(string data)
-        //{
-        //    TrackData track = new TrackData();
-        //    var words = data.Split(';');
-        //    track.Tag = words[0];
-        //    track.X = int.Parse(words[1]);
-        //    track.Y = int.Parse(words[2]);
-        //    track.Altitude = int.Parse(words[3]);
-        //    track.Timestamp = DateTime.ParseExact(words[4], "yyyyMMddHHmmssfff",
-        //        System.Globalization.CultureInfo.InvariantCulture);
-        //    track.Course = 0;
-        //    track.Velocity = 0;
-
-        //    return track;
-        //}
-
-
-
     }
 }

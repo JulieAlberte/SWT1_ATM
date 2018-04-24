@@ -38,10 +38,6 @@ namespace ATMClasses
 
         public bool ValidateTrack(int xcoordinate, int ycoordinate, int altitude)
         {
-            //int xCoordinate = int.Parse(xcoordinate);
-            //int yCoordinate = int.Parse(ycoordinate);
-            //int aAltitude = int.Parse(altitude);
-
             if (xcoordinate >= _minXCoordinate && xcoordinate <= _maxXCoordinate
                                                && ycoordinate >= _minYCoordinate && ycoordinate <= _maxYCoordinate
                                                && altitude >= _minAltitude && altitude <= _maxAltitude)

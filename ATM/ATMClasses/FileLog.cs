@@ -13,15 +13,30 @@ namespace ATMClasses
     {
         public string FilePath { get; set; }
 
-        public FileLog(string filePath = @"Log.Txt") => FilePath = filePath;
-        public void LogToFile(List<SeperationEvent> seperationEvents)
+        public FileLog(string filePath = @"C:\Log.Txt") 
+            => FilePath = filePath;
+
+        public void LogToFile(List<SeperationEventData> seperationList)
         {
             //Writes every object in seperationEvents list into a file, per default "Log.txt"
-            using (StreamWriter file = new StreamWriter(FilePath, true))
+            if (!File.Exists(FilePath))
             {
-                for(int i = 0; i < seperationEvents.Count; i++)
+                using (StreamWriter file = File.CreateText(FilePath))
                 {
-                    file.WriteLine(i);
+                    for (int i = 0; i < seperationList.Count; i++)
+                    {
+                        file.WriteLine(seperationList[i]);
+                    }
+                }
+            }
+            else
+            {
+                using (StreamWriter file = new StreamWriter(FilePath))
+                {
+                    for (int i = 0; i < seperationList.Count; i++)
+                    {
+                        file.WriteLine(seperationList[i]);
+                    }
                 }
             }
         }

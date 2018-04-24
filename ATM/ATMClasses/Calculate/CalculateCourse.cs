@@ -26,7 +26,7 @@ namespace ATMClasses.Calculate
             else
             {
                 double radian = Math.Atan2(deltaY, deltaX);
-                //Konvert to degress 
+                //Convert to degress 
                 Degree = radian / Math.PI * 180;
 
                 Degree = 90 - Degree;

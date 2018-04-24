@@ -13,7 +13,6 @@ namespace AppWithMethod
     {
         public void ReceiveTracks(List<TrackData> tracks)
         {
-            //Thread.Sleep(2000);
             System.Console.Clear();
             foreach (var track in tracks)
             {
