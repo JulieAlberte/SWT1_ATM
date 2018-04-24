@@ -66,9 +66,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IT1_.cs" />
+    <Compile Include="IT1_TrackSeperation.cs" />
+    <Compile Include="IT2_TrackData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Velocity_Course_IT.cs" />
+    <Compile Include="IT3_Velocity_Course.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

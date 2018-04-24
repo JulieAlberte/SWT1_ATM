@@ -14,7 +14,7 @@ using TransponderReceiver;
 namespace ATM.Test.Integration
 {
     [TestFixture]
-    class Velocity_Course_IT
+    class IT3_Velocity_Course
     {
         private ITransponderReceiver _transponderReceiver;
         private RawTransponderDataEventArgs _fakeEventArgs1;
