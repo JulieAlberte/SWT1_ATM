@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ATMClasses.Data;
 using ATMClasses.Interfaces;
 using TransponderReceiver;
+using ATMClasses.Calculate;
 
 
 namespace ATMClasses.Decoding
@@ -51,8 +52,14 @@ namespace ATMClasses.Decoding
                             if (tempTrackList[i].Tag.Equals(td.Tag, StringComparison.OrdinalIgnoreCase))
                             {
                                 //Beregner og sætter velocity og course
-                                CalculateVelocity(tempTrackList[i], td);
-                                CalculateCourse(tempTrackList[i], td);
+                                CalculateVelocity calculateVelocity = new CalculateVelocity();
+                                CalculateCourse calculateCourse = new CalculateCourse();
+                                
+                                calculateVelocity.CalVelocity(tempTrackList[i],td);
+                                calculateCourse.CalCourse(tempTrackList[i],td);
+
+                                //CalculateVelocity(tempTrackList[i], td);
+                                //CalculateCourse(tempTrackList[i], td);
                             }
                         }
                     //Tilføjer ny data til listen

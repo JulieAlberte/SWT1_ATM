@@ -13,7 +13,7 @@ namespace ATMClasses.Data
         public int Y { get; set; }
         public int Altitude { get; set; }
         public double Velocity { get; set; }
-        public int Course { get; set; }
+        public double Course { get; set; }
 
         public DateTime Timestamp { get; set; }
 
