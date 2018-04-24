@@ -15,6 +15,7 @@ namespace ATMClasses
         private readonly IFileLog _fileLog;
 
         public TrackSeperation()
+
         {
             _seperationEvent = new SeperationEventData();
             _seperationEventsList = new List<SeperationEventData>();
