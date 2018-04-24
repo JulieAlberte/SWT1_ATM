@@ -121,23 +121,23 @@ namespace ATM.Unit.Test
         }
 
 
-        [Test]
-        public void Decoding_ThreeTrackDatasInList_CountIsCorrect()
-        {
-            _fakeTransponderData.TransponderData.Add("TRK002;12345;67890;12000;20151014123456789");
-            _fakeTransponderData.TransponderData.Add("TRK003;12345;67890;12000;20151014123456789");
-            RaiseFakeEvent();
-            _trackReceiver.Received().ReceiveTracks(Arg.Is<List<TrackData>>(x => x.Count == 3));
-        }
+        //[Test]
+        //public void Decoding_ThreeTrackDatasInList_CountIsCorrect()
+        //{
+        //    _fakeTransponderData.TransponderData.Add("TRK002;12345;67890;12000;20151014123456789");
+        //    _fakeTransponderData.TransponderData.Add("TRK003;12345;67890;12000;20151014123456789");
+        //    RaiseFakeEvent();
+        //    _trackReceiver.Received().ReceiveTracks(Arg.Is<List<TrackData>>(x => x.Count == 3));
+        //}
 
-        [Test]
-        public void Decoding_ThreeTrackDatasInList_TagOfThirdTrackDataIsCorrect()
-        {
-            _fakeTransponderData.TransponderData.Add("TRK002;12345;67890;12000;20151014123456789");
-            _fakeTransponderData.TransponderData.Add("TRK003;12345;67890;12000;20151014123456789");
-            RaiseFakeEvent();
-            _trackReceiver.Received().ReceiveTracks(Arg.Is<List<TrackData>>(x => x[2].Tag == "TRK003"));
-        }
+        //[Test]
+        //public void Decoding_ThreeTrackDatasInList_TagOfThirdTrackDataIsCorrect()
+        //{
+        //    _fakeTransponderData.TransponderData.Add("TRK002;12345;67890;12000;20151014123456789");
+        //    _fakeTransponderData.TransponderData.Add("TRK003;12345;67890;12000;20151014123456789");
+        //    RaiseFakeEvent();
+        //    _trackReceiver.Received().ReceiveTracks(Arg.Is<List<TrackData>>(x => x[2].Tag == "TRK003"));
+        //}
 
 
     }
