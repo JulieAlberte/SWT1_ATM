@@ -95,6 +95,8 @@ namespace ATM.Unit.Test
             fileLog.Received().LogToFile(Arg.Is<List<SeperationEventData>>((x) => x[0].TAG1 == "ABC123" && x[0].TAG2== "QWE123"));
         }
 
+        
+
 
 
 
