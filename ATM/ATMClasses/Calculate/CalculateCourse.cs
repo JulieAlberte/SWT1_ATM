@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ATMClasses.Calculate.Interface;
 using ATMClasses.Data;
 
 namespace ATMClasses.Calculate
 {
-    class CalculateCourse
+    class CalculateCourse : ICalculateCourse
     {
         public void CalCourse(TrackData track1, TrackData track2)
         {
@@ -36,8 +37,10 @@ namespace ATMClasses.Calculate
             }
 
             track2.Course = Degree;
-            
+
         }
+
+
     }
 }
 
