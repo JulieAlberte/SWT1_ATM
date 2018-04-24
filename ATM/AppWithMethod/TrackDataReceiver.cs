@@ -11,7 +11,7 @@ namespace AppWithMethod
 {
     class TrackDataReceiver : ITrackReceiver
     {
-        Calculator vc = new Calculator();
+        //Calculator vc = new Calculator();
         public void ReceiveTracks(List<TrackData> tracks)
         {
             //Thread.Sleep(2000);

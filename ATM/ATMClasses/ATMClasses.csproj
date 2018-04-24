@@ -46,7 +46,9 @@
     <Compile Include="Airspace.cs" />
     <Compile Include="Data\TrackData.cs" />
     <Compile Include="Decoding\DecodingWithMethod.cs" />
+    <Compile Include="FileLog.cs" />
     <Compile Include="Interfaces\IAirspace.cs" />
+    <Compile Include="Interfaces\IFileLog.cs" />
     <Compile Include="Interfaces\ISeperationEventController.cs" />
     <Compile Include="Interfaces\ITrackDecoding.cs" />
     <Compile Include="Interfaces\ITrackReceiver.cs" />

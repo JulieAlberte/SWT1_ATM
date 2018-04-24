@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATMClasses
 {
-    class SeperationEvent
+    public class SeperationEvent
     {
         public string TAG1 { get; set; }
         public string TAG2 { get; set; }
