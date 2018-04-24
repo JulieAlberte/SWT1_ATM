@@ -8,7 +8,7 @@ using ATMClasses.Interfaces;
 
 namespace ATMClasses
 {
-    class TrackSeperation : ITrackSeperation
+    public class TrackSeperation : ITrackSeperation
     {
         private readonly SeperationEventData _seperationEvent = new SeperationEventData();
         private readonly List<SeperationEventData> _seperationEventsList = new List<SeperationEventData>();
