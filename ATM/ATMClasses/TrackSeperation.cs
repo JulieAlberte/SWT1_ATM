@@ -10,18 +10,18 @@ namespace ATMClasses
 {
     public class TrackSeperation : ITrackSeperation
     {
-        private readonly SeperationEventData _seperationEvent = new SeperationEventData();
-        private readonly List<SeperationEventData> _seperationEventsList = new List<SeperationEventData>();
-        private readonly IFileLog _fileLog = new FileLog();
+        private readonly SeperationEventData _seperationEvent;
+        private readonly List<SeperationEventData> _seperationEventsList;
+        private readonly IFileLog _fileLog;
 
         
 
-        //public TrackSeperation()
-        //{
-        //    _seperationEvent = new SeperationEventData();
-        //    _seperationEventsList = new List<SeperationEventData>();
-        //    _fileLog = new FileLog();
-        //}
+        public TrackSeperation(SeperationEventData seperationEvent, FileLog fileLog)
+        {
+            _seperationEvent = seperationEvent;
+            _seperationEventsList = new List<SeperationEventData>();
+            _fileLog = fileLog;
+        }
 
         public void CheckForSeperation(List<TrackData> trackDatalList)
         {
