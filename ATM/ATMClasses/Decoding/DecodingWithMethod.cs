@@ -29,6 +29,7 @@ namespace ATMClasses.Decoding
 
         public void OnRawData(object o, RawTransponderDataEventArgs args)
         {
+            Airspace airspace = new Airspace(90000,10000,20000,500);
             TrackValidation TV = new TrackValidation();
             //Sletter tempTrackList
             tempTrackList.Clear();
@@ -41,8 +42,11 @@ namespace ATMClasses.Decoding
             foreach (var track in args.TransponderData)
             {
                 //Converts into a trackobject 
-                var td = Convert(track);
+                Track track1 = new Track();
+                //IPosition position = new Position();
+                var td = track1.Convert(track);
                 //Validates if it's in our area
+                //if (airspace.ValidAirspace(position))
                 if (TV.ValidateTrack(td.X, td.Y, td.Altitude))
                 {
                     //Tjekker hele den gamle liste igennem, om der findes data om flyet, og derfor kan beregne velocity og course
@@ -71,21 +75,22 @@ namespace ATMClasses.Decoding
             outputTrackReceiver.ReceiveTracks(trackList); 
         }
 
-        private TrackData Convert(string data)
-        {
-            TrackData track = new TrackData();
-            var words = data.Split(';');
-            track.Tag = words[0];
-            track.X = int.Parse(words[1]);
-            track.Y = int.Parse(words[2]);
-            track.Altitude = int.Parse(words[3]);
-            track.Timestamp = DateTime.ParseExact(words[4], "yyyyMMddHHmmssfff",
-                System.Globalization.CultureInfo.InvariantCulture);
-            track.Course = 0;
-            track.Velocity = 0;
 
-            return track;
-        }
+        //private TrackData Convert(string data)
+        //{
+        //    TrackData track = new TrackData();
+        //    var words = data.Split(';');
+        //    track.Tag = words[0];
+        //    track.X = int.Parse(words[1]);
+        //    track.Y = int.Parse(words[2]);
+        //    track.Altitude = int.Parse(words[3]);
+        //    track.Timestamp = DateTime.ParseExact(words[4], "yyyyMMddHHmmssfff",
+        //        System.Globalization.CultureInfo.InvariantCulture);
+        //    track.Course = 0;
+        //    track.Velocity = 0;
+
+        //    return track;
+        //}
 
 
 
