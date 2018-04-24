@@ -8,7 +8,7 @@ using ATMClasses.Data;
 
 namespace ATMClasses.Calculate
 {
-    class CalculateCourse : ICalculateCourse
+    public class CalculateCourse : ICalculateCourse
     {
         public void CalCourse(TrackData track1, TrackData track2)
         {
