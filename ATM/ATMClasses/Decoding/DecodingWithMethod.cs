@@ -29,10 +29,13 @@ namespace ATMClasses.Decoding
         public void OnRawData(object o, RawTransponderDataEventArgs args)
         {
             TrackValidation TV = new TrackValidation();
+            //Sletter tempTrackList
             tempTrackList.Clear();
-            tempTrackList = trackList;
+            //Gemmer gammel data fra trackList i templist, til beregning af velocity og course
+            tempTrackList = trackList.GetRange(0, trackList.Count);
+            //Sletter trackList
             trackList.Clear();
-
+           
             //Adds and converts new flight(s)
             foreach (var track in args.TransponderData)
             {
@@ -41,23 +44,22 @@ namespace ATMClasses.Decoding
                 //Validates if it's in our area
                 if (TV.ValidateTrack(td.X, td.Y, td.Altitude))
                 {
-                    if (tempTrackList.Count != 0)
-                    {
-                        for (int i = 0; i < tempTrackList.Count; i++)
+                    //Tjekker hele den gamle liste igennem, om der findes data om flyet, og derfor kan beregne velocity og course
+                    for (int i = 0; i < tempTrackList.Count; i++)
                         {
+                            //Tjekker på ens tags mellem gamle data og ny data
                             if (tempTrackList[i].Tag.Equals(td.Tag, StringComparison.OrdinalIgnoreCase))
                             {
-                                Console.WriteLine("Jeg er her");
-                                td.Velocity = CalculateVelocity(tempTrackList[i], td);
+                                //Beregner og sætter velocity og course
+                                CalculateVelocity(tempTrackList[i], td);
                                 CalculateCourse(tempTrackList[i], td);
                             }
                         }
-                    }
-
+                    //Tilføjer ny data til listen
                     trackList.Add(td);
                 }
             }
-            
+
             //printer all tracks i listen
             outputTrackReceiver.ReceiveTracks(trackList); 
         }
@@ -78,18 +80,17 @@ namespace ATMClasses.Decoding
             return track;
         }
 
-        public double CalculateVelocity(TrackData oldTrackData, TrackData newTrackData)//, DateTime lastTime, DateTime currentTime)
+        public void CalculateVelocity(TrackData oldTrackData, TrackData newTrackData)//, DateTime lastTime, DateTime currentTime)
         {
-            double dist = Math.Sqrt(Math.Pow((oldTrackData.X - newTrackData.X), 2) + Math.Pow((oldTrackData.Y - newTrackData.Y), 2));
-
-
-            //var dist = (newTrackData.Course - oldTrackData.Course);
+            //Finder afstanden mellem gamle og nye punkt
+            double dist = Math.Sqrt(Math.Pow((newTrackData.X - oldTrackData.X), 2) + Math.Pow((newTrackData.Y - oldTrackData.Y), 2));
+            
+            //Tiden der er gået
             var time = newTrackData.Timestamp - oldTrackData.Timestamp;
-            //var time = currentTime - lastTime;
-            //var velocity = time.TotalSeconds == 0 ? 0 : Math.Round(dist / time.TotalSeconds);
-            //newTrackData.Velocity = velocity;
-            //td2.Velocity = velocity;
-            return time.TotalSeconds == 0 ? 0 : Math.Round(dist / time.TotalSeconds);
+            //Beregner Velocity
+            var velocity = time.TotalSeconds == 0 ? 0 : Math.Round(dist / time.TotalSeconds);
+            //Sætter velocity i objektet
+            newTrackData.Velocity = velocity;
         }
 
         public void CalculateCourse(TrackData oldTrackData, TrackData newTrackData)
@@ -102,7 +103,6 @@ namespace ATMClasses.Decoding
                 angleDeg += 360;
 
             newTrackData.Course = (int)angleDeg;
-            //return (int)angleDeg;
         }
     }
 }
