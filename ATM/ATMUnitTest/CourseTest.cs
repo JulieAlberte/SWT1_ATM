@@ -12,6 +12,8 @@ using Castle.DynamicProxy.Generators;
 using NSubstitute;
 using NUnit.Framework;
 
+
+//This class is a unit test for Course
 namespace ATM.Unit.Test
 {
     [TestFixture]
@@ -54,8 +56,65 @@ namespace ATM.Unit.Test
         [Test]
         public void CalculateCourse_NECorner()
         {
+            _track1.X = 10000;
+            _track1.Y = 10000;
+            _track2.X = 90000;
+            _track2.Y = 90000;
+
+            _uut.CalCourse(_track1,_track2);
+            Assert.That(Math.Round(_track2.Course),Is.EqualTo(45));
 
         }
+
+        [Test]
+        public void CalculateCourse_North()
+        {
+            _track1.X = 10000;
+            _track1.Y = 10000;
+            _track2.X = 10000;
+            _track2.Y = 90000;
+
+            _uut.CalCourse(_track1, _track2);
+            Assert.That(Math.Round(_track2.Course), Is.EqualTo(0));
+
+        }
+
+        [Test]
+        public void CalculateCourse_South()
+        {
+            _track1.X = 10000;
+            _track1.Y = 90000;
+            _track2.X = 10000;
+            _track2.Y = 10000;
+
+            _uut.CalCourse(_track1, _track2);
+            Assert.That(Math.Round(_track2.Course), Is.EqualTo(180));
+        }
+
+        [Test]
+        public void CalculateCourse_west()
+        {
+            _track1.X = 90000;
+            _track1.Y = 90000;
+            _track2.X = 10000;
+            _track2.Y = 90000;
+
+            _uut.CalCourse(_track1, _track2);
+            Assert.That(Math.Round(_track2.Course), Is.EqualTo(270));
+        }
+
+        [Test]
+        public void CalculateCourse_East()
+        {
+            _track1.X = 10000;
+            _track1.Y = 90000;
+            _track2.X = 90000;
+            _track2.Y = 90000;
+
+            _uut.CalCourse(_track1, _track2);
+            Assert.That(Math.Round(_track2.Course), Is.EqualTo(90));
+        }
+
 
 
 
