@@ -7,7 +7,8 @@ using ATMClasses.Data;
 using NSubstitute; 
 using NUnit.Framework;
 using NUnit; 
-using ATMClasses; 
+using ATMClasses;
+using ATMClasses.Calculate;
 using ATMClasses.Interfaces;
 using ATMClasses.Calculate.Interface;
 using NUnit.Framework.Internal;
@@ -18,22 +19,67 @@ namespace ATM.Unit.Test
     [TestFixture]
     class VelocityTest
     {
-        private ICalculateVel _calculateVel;
 
-        private ITrack oldTrack;
-        private ITrack newTrack; 
+        private TrackData _track1;
+        private TrackData _track2;
 
+        private ICalculateVel _uut;
+        //private List<TrackData> _trackDatas;
 
 
         [SetUp]
         public void SetUp()
         {
-            //_calculateVel = new Velocity();
+            _uut = new CalculateVelocity();
+        
+            var dateTime = new DateTime(2017, 03, 02, 16, 20, 18);
+            var dateTime2 = new DateTime(2017, 03, 02, 16, 20, 20);
+
+            _track1 = new TrackData
+            {
+                Tag = "ABC123",
+                X = 24689,
+                Y = 98765,
+                Timestamp = dateTime
 
 
-            oldTrack = Substitute.For<ITrack>();
-            newTrack = Substitute.For<ITrack>();
+            };
+
+
+            _track2 = new TrackData
+            {
+                Tag = "ABC123",
+                X = 13579,
+                Y = 56565,
+                Timestamp = dateTime2
+            };
+
+
+            //_trackDatas = new List<TrackData>
+            //{
+            //    _track1,
+            //    _track2
+            //};
+
+
+
         }
+
+        [Test]
+        public void CalculateVelocityTest()
+        {
+            _uut.CalVelocity(_track1, _track2);
+            Assert.That(Math.Round(_track2.Velocity, 2), Is.EqualTo(21818.98));
+
+        }
+
+    }
+
+
+
+       
+        
+        
 
 
         
@@ -41,19 +87,5 @@ namespace ATM.Unit.Test
       
 
 
-        [Test]
-        public void NoTimeDiff_returnZero()
-        {
-            int exp = 0; 
-            DateTime time = new DateTime(2013, 12, 24, 12, 55, 34, 100);
-            DateTime newTime = time; 
-
-
-            //Assert.AreEqual();
-            
-        }
-
-
-
-    }
+    
 }
