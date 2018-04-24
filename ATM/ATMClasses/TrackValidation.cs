@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATMClasses
 {
-    class TrackValidation
+   public class TrackValidation
     {
         private int _minXCoordinate { get; set; }
         private int _maxXCoordinate { get; set; }
