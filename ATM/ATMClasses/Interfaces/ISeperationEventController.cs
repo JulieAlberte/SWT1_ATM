@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ATMClasses.Interfaces
 {
-    public interface IAirspace
+    interface ISeperationEventController
     {
-        bool ValidAirspace(IPosition position);
+        void CoflictDetected(List<SeperationEvent> newSeperationsEvent);
+
     }
 }
