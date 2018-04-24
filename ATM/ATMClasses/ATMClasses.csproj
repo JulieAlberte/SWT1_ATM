@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Airspace.cs" />
+    <Compile Include="Calculate\CalculateCourse.cs" />
+    <Compile Include="Calculate\CalculateVelocity.cs" />
     <Compile Include="Data\TrackData.cs" />
     <Compile Include="Decoding\DecodingWithMethod.cs" />
     <Compile Include="FileLog.cs" />
@@ -59,8 +61,6 @@
     <Compile Include="TrackSeperation.cs" />
     <Compile Include="TrackValidation.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Calculate\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
