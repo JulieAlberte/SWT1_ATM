@@ -60,14 +60,15 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="CourseTest.cs" />
 =======
 >>>>>>> a90fead4329ce35a73e22dda1a9f91e7926d4a45
+=======
+    <Compile Include="AirspaceTest.cs" />
+>>>>>>> parent of a90fead... Tilføjet filer
     <Compile Include="DecodingWithMethodTest.cs" />
-    <Compile Include="FileLogTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeperationTest.cs" />
-    <Compile Include="TrackValidationTest.cs" />
     <Compile Include="VelocityTest.cs" />
   </ItemGroup>
   <ItemGroup>
